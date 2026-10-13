@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>语文课文注释 · 记忆卡片</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf4 100%);
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+    color: #2b2b2b;
+  }
+  header {
+    max-width: 1000px; margin: 0 auto 8px; text-align: center;
+  }
+  header h1 {
+    font-size: 26px; color: #1f3b73; margin-bottom: 6px;
+  }
+  header p {
+    color: #6b7280; font-size: 14px;
+  }
+  .controls {
+    max-width: 1000px; margin: 14px auto 26px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  }
+  .controls button {
+    border: none; border-radius: 999px; padding: 8px 18px; font-size: 13px; cursor: pointer;
+    background: #1f3b73; color: #fff; transition: opacity .2s;
+  }
+  .controls button:hover { opacity: .85; }
+  .controls button.secondary { background: #c7d2e8; color: #1f3b73; }
+  .section {
+    max-width: 1000px; margin: 0 auto 34px;
+    background: rgba(255,255,255,.65);
+    border-radius: 18px; padding: 22px 20px 26px;
+    box-shadow: 0 4px 18px rgba(31,59,115,.06);
+  }
+  .section h2 {
+    font-size: 18px; color: #1f3b73; margin-bottom: 16px;
+    padding-left: 12px; border-left: 5px solid #c8a24b;
+  }
+  .card-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px;
+  }
+  .card {
+    background: transparent; border: none; cursor: pointer; perspective: 900px;
+    height: 120px; padding: 0; text-align: left; font-family: inherit;
+  }
+  .card .inner {
+    position: relative; width: 100%; height: 100%;
+    transform-style: preserve-3d; transition: transform .5s ease;
+  }
+  .card.flipped .inner { transform: rotateY(180deg); }
+  .card .front, .card .back {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 14px; display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 14px 16px; box-shadow: 0 2px 8px rgba(31,59,115,.08);
+  }
+  .card .front { background: #fff; border: 1.5px solid #dbe3f1; }
+  .card .back {
+    background: #1f3b73; color: #fff; transform: rotateY(180deg);
+    justify-content: flex-start;
+  }
+  .card.author .back { background: #7a4a21; }
+  .card.source .back { background: #2e5e4e; }
+  .card .tag {
+    font-size: 11px; color: #9aa6bd; margin-bottom: 8px; letter-spacing: 1px;
+  }
+  .card .term { font-size: 16px; font-weight: 700; color: #1f3b73; }
+  .card .front .term { word-break: break-all; }
+  .card .back .tag { color: rgba(255,255,255,.75); }
+  .card .back p { font-size: 13px; line-height: 1.55; max-height: 80px; overflow-y: auto; }
+  .card:hover .front { border-color: #c8a24b; }
+  footer {
+    max-width: 1000px; margin: 10px auto 0; text-align: center; color: #9aa6bd; font-size: 12px;
+  }
+  @media (max-width: 520px) {
+    .card-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+    .card { height: 110px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>语文课文注释 · 记忆卡片</h1>
+  <p>点击卡片翻面查看释义 · 先默背，再翻转核对</p>
+</header>
+<div class="controls">
+  <button onclick="flipAll(true)">全部显示答案</button>
+  <button class="secondary" onclick="flipAll(false)">全部隐藏</button>
+</div>
+<div class="section" id="sec1">
+<h2>观沧海 · 曹操</h2>
+<div class="card-grid">
+<button class="card author" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">作者</span><span class="term">曹操</span></div><div class="back"><span class="tag back-tag">作者简介</span><p>曹操（155—220），字孟德，沛国谯（qiáo）县（今安徽亳州）人，东汉末政治家、军事家、文学家。</p></div></div></button>
+<button class="card source" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">出处</span><span class="term">文学常识</span></div><div class="back"><span class="tag back-tag">出处与背景</span><p>选自《曹操集·诗集》（中华书局2018年版）。这是曹操诗《步出夏门行》的第一章。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">澹澹（dàn dàn）</span></div><div class="back"><span class="tag back-tag">释义</span><p>水波荡漾的样子。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">竦峙（sǒng zhì）</span></div><div class="back"><span class="tag back-tag">释义</span><p>耸立。竦、峙，都是耸立的意思。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">星汉</span></div><div class="back"><span class="tag back-tag">释义</span><p>银河。</p></div></div></button>
+</div></div><div class="section" id="sec2">
+<h2>次北固山下 · 王湾</h2>
+<div class="card-grid">
+<button class="card author" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">作者</span><span class="term">王湾</span></div><div class="back"><span class="tag back-tag">作者简介</span><p>王湾，生卒年不详，洛阳（今属河南）人，唐代诗人。</p></div></div></button>
+<button class="card source" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">出处</span><span class="term">文学常识</span></div><div class="back"><span class="tag back-tag">出处与背景</span><p>选自《全唐诗》卷一百一十五（中华书局1960年版）。次，停宿。北固山，在今江苏镇江北。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">客路</span></div><div class="back"><span class="tag back-tag">释义</span><p>旅人前行的路。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">潮平两岸阔</span></div><div class="back"><span class="tag back-tag">释义</span><p>潮水涨满，与两岸齐平，整个江面十分开阔。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">海日生残夜</span></div><div class="back"><span class="tag back-tag">释义</span><p>夜还未消尽，红日已从海上升起。残夜，指夜将尽未尽之时。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">江春入旧年</span></div><div class="back"><span class="tag back-tag">释义</span><p>旧年未过，江上新春已来。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">归雁洛阳边</span></div><div class="back"><span class="tag back-tag">释义</span><p>希望北归的大雁捎一封家书到洛阳。</p></div></div></button>
+</div></div><div class="section" id="sec3">
+<h2>天净沙·秋思 · 马致远</h2>
+<div class="card-grid">
+<button class="card author" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">作者</span><span class="term">马致远</span></div><div class="back"><span class="tag back-tag">作者简介</span><p>马致远（约1251—1321以后），号东篱，一说字千里，大都（今北京）人，元代戏曲作家、散曲家。</p></div></div></button>
+<button class="card source" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">出处</span><span class="term">文学常识</span></div><div class="back"><span class="tag back-tag">出处与背景</span><p>选自《全元散曲》（中华书局2018年版）。天净沙，曲牌名。思，思绪。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">昏鸦</span></div><div class="back"><span class="tag back-tag">释义</span><p>黄昏时将要回巢的乌鸦。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">断肠</span></div><div class="back"><span class="tag back-tag">释义</span><p>形容悲伤到极点。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">天涯</span></div><div class="back"><span class="tag back-tag">释义</span><p>天边，指远离家乡的地方。</p></div></div></button>
+</div></div><div class="section" id="sec4">
+<h2>闻王昌龄左迁龙标遥有此寄 · 李白</h2>
+<div class="card-grid">
+<button class="card author" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">作者</span><span class="term">李白</span></div><div class="back"><span class="tag back-tag">作者简介</span><p>李白（701—762），字太白，号青莲居士，唐代诗人，出生于西域，幼时随父迁居绵州昌隆（今四川江油）。</p></div></div></button>
+<button class="card source" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">出处</span><span class="term">文学常识</span></div><div class="back"><span class="tag back-tag">出处与背景</span><p>王昌龄（？—约756），字少伯，京兆长安（今陕西西安）人，唐代诗人。天宝年间被贬为龙标尉。左迁，指降职，古代以右为尊，左为卑。龙标，唐代县名，在今湖南洪江西。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">杨花</span></div><div class="back"><span class="tag back-tag">释义</span><p>柳絮。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">子规</span></div><div class="back"><span class="tag back-tag">释义</span><p>即杜鹃，又称“布谷鸟”。</p></div></div></button>
+</div></div><div class="section" id="sec5">
+<h2>《世说新语》二则</h2>
+<div class="card-grid">
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">内集</span></div><div class="back"><span class="tag back-tag">释义</span><p>把家里人聚集在一起。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">儿女</span></div><div class="back"><span class="tag back-tag">释义</span><p>子女，这里泛指家里的小辈，包括侄儿侄女。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">文义</span></div><div class="back"><span class="tag back-tag">释义</span><p>文章的义理。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">俄而</span></div><div class="back"><span class="tag back-tag">释义</span><p>不久，一会儿。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">骤</span></div><div class="back"><span class="tag back-tag">释义</span><p>急。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">何所似</span></div><div class="back"><span class="tag back-tag">释义</span><p>像什么。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">胡儿</span></div><div class="back"><span class="tag back-tag">释义</span><p>即谢朗，字长度，小名胡儿，谢安次兄谢据的长子。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">差（chā）可拟</span></div><div class="back"><span class="tag back-tag">释义</span><p>大体可以相比。差，大体。拟，相比。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">未若</span></div><div class="back"><span class="tag back-tag">释义</span><p>不如，不及。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">因风</span></div><div class="back"><span class="tag back-tag">释义</span><p>乘风。因，趁、乘。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">花瑞</span></div><div class="back"><span class="tag back-tag">释义</span><p>指花带来的好兆头。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">菡萏（hàndàn）</span></div><div class="back"><span class="tag back-tag">释义</span><p>荷花的别称，这里指红莲含苞未放。</p></div></div></button>
+</div></div><div class="section" id="sec6">
+<h2>秋天的怀念 · 史铁生</h2>
+<div class="card-grid">
+<button class="card author" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">作者</span><span class="term">史铁生</span></div><div class="back"><span class="tag back-tag">作者简介</span><p>史铁生（1951—2010），北京人，作家。代表作有小说《我的遥远的清平湾》《命若琴弦》《务虚笔记》，散文《我与地坛》《合欢树》《病隙碎笔》等。</p></div></div></button>
+<button class="card source" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">出处</span><span class="term">文学常识</span></div><div class="back"><span class="tag back-tag">出处与背景</span><p>选自《史铁生散文选》（人民文学出版社2005年版）。</p></div></div></button>
+<button class="card note" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">注释</span><span class="term">北海</span></div><div class="back"><span class="tag back-tag">释义</span><p>这里指北京的北海公园。</p></div></div></button>
+</div></div><div class="section" id="sec7">
+<h2>济南的冬天 · 老舍</h2>
+<div class="card-grid">
+<button class="card author" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">作者</span><span class="term">老舍</span></div><div class="back"><span class="tag back-tag">作者简介</span><p>老舍（1899—1966），原名舒庆春，字舍予，北京人，满族，作家。主要作品有小说《骆驼祥子》《四世同堂》，话剧《茶馆》《龙须沟》等。</p></div></div></button>
+<button class="card source" onclick="this.classList.toggle('flipped')"><div class="inner"><div class="front"><span class="tag">出处</span><span class="term">文学常识</span></div><div class="back"><span class="tag back-tag">出处与背景</span><p>节选自《一些印象（四、五、六、七）》（《老舍全集》第十四卷，人民文学出版社2008年版）。题目为编者所加。略有改动。</p></div></div></button>
+</div></div>
+<footer>语文七年级上册 · 作者简介与词语注释记忆卡片</footer>
+<script>
+function flipAll(show) {
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('flipped', show));
+}
+</script>
+<script type="text/javascript" src="/accessproxy_statics/h5_fp.js" defer></script>
+<script type="text/javascript" src="/accessproxy_statics/wm.js" defer></script>
+<script type="text/javascript" src="/accessproxy_statics/chrome_banner.js" defer></script>
+</body>
+</html>
